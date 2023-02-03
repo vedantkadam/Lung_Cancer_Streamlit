@@ -23,4 +23,10 @@ pip install pandas
 pip install mljar-mercury
 pip install matplotlib
 ```
-    
+
+### Notes 
+- Model needs to be trained on various algo (Logistic done)
+- implement model in webapp
+- hosting maybe
+- CNN Angle 
+- Using google ml tool
