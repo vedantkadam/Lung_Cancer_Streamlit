@@ -24,6 +24,11 @@ pip install mljar-mercury
 pip install matplotlib
 ```
 
+Install modules if not available using following commands
+```bash
+pip install -r requirements.txt
+```
+
 ### Notes 
 - Model needs to be trained on various algo (Logistic done)
 - implement model in webapp
