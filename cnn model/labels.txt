@@ -1,0 +1,2 @@
+0 Normal CT Scan
+1 Lung Cancer
