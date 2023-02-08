@@ -83,17 +83,48 @@ if (selection == 'Introduction'):
     )
 
 if (selection == 'About the Dataset'):
-    import streamlit as st
-    import numpy as np
+    tab1, tab2, tab3 , tab4 ,tab5= st.tabs(["Dataset analysis", "Training Data", "Test Data","Algorithms Used",'CNN Based Indentification'])
 
-    taba, tabb = st.tabs(["📈 Chart", "🗃 Data"])
-    data = np.random.randn(10, 1)
+    with tab1:
 
-    taba.subheader("A tab with a chart")
-    taba.line_chart(data)
+        st.title("Lung Cancer Dataset")
+        data=pd.read_csv("data.csv")
+        st.write(data.head(10))
+        # fig=plt.figure(figsize=(9,7))
+        sns.set(rc={'figure.figsize':(8,8)})
+        pl=sns.countplot(x ='Level', data = data , palette='rocket')
+        st.pyplot(pl.figure)
+       
 
-    tabb.subheader("A tab with the data")
-    tabb.write(data)
+    with tab2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+    with tab3:
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+        
+    with tab4:
+        st.title("List of Algorithms Used")
+        algo = Image.open("images/algo.png")
+
+        st.image(algo, caption='ML Algorithms',width=700)
+
+        st.write("Since this is a Mutlti-Class Classification we have used Algorithms which are maily used for Supervised Learning for the following Problem Statement ")
+
+        st.markdown(
+            """
+            Supervised Learning Algorithms:
+            - Linear Regression
+            - Support Vector Machine
+            - K-Nearest Neighbours (KNN)
+            - Decision Tree Classifier
+            """
+            )
+
+    with tab5:
+        st.title("Convolutional Neural Network Model")
+    
 
 # Lung Cancer disease Prediction pages
 if (selection == 'Lung Cancer Prediction'):
