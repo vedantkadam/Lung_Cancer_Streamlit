@@ -13,7 +13,7 @@ import tensorflow as tf
 from tempfile import NamedTemporaryFile
 from tensorflow.keras.preprocessing import image 
 from streamlit_option_menu import option_menu
-st.set_page_config(page_title="Stock Price", page_icon="🧊", layout="centered", initial_sidebar_state = "auto")
+st.set_page_config(page_title='Lung Cancer Detection', page_icon="🖖")
 #Loading models
 cancer_model = pickle.load(open('models/final_model.sav', 'rb'))
 
@@ -23,7 +23,7 @@ with st.sidebar:
     'About the Dataset',
     'Lung Cancer Prediction',
     'CNN Based disease Prediction'],
-    icons = ['activity','heart', 'person'],
+    icons = ['activity','heart','person', 'heart'],
     default_index = 0)
 
 #Introduction page
@@ -86,26 +86,65 @@ if (selection == 'About the Dataset'):
     tab1, tab2, tab3 , tab4 ,tab5= st.tabs(["Dataset analysis", "Training Data", "Test Data","Algorithms Used",'CNN Based Indentification'])
 
     with tab1:
-
-        st.title("Lung Cancer Dataset")
-        data=pd.read_csv("data.csv")
+        
+        st.header("Lung Cancer Dataset")
+        data=pd.read_csv("datasets/data.csv")
         st.write(data.head(10))
-        # fig=plt.figure(figsize=(9,7))
-        sns.set(rc={'figure.figsize':(8,8)})
-        pl=sns.countplot(x ='Level', data = data , palette='rocket')
-        st.pyplot(pl.figure)
-       
+
+        st.header("Pearson Correlation Matrix")
+        coors = Image.open("images/coors.png")
+
+        st.image(coors, caption='Pearson Correlation Matrix',width=800)
+        st.write("From the above co-relation matrix we did apply a function which picks out values based on their high correlation with a particular attribute which could be dropped to improve Machine Learning Models Performance")
+        st.markdown( """
+            
+            - The Following Attributed are as follows :-
+            """)
+        code = '''{'Chest Pain',
+ 'Coughing of Blood',
+ 'Dust Allergy',
+ 'Genetic Risk',
+ 'OccuPational Hazards',
+ 'chronic Lung Disease'}'''
+        st.code(code, language='python')
 
     with tab2:
-        st.header("A dog")
-        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+        st.header("Lung Cancer Training Dataset")
+
+        st.subheader("X_Train Data")
+        data=pd.read_csv("datasets/train.csv", index_col=0)
+        st.write(data)
+        code = ''' Index(['Age', 'Gender', 'Air Pollution', 'Alcohol use', 'Balanced Diet',
+       'Obesity', 'Smoking', 'Passive Smoker', 'Fatigue', 'Weight Loss',
+       'Shortness of Breath', 'Wheezing', 'Swallowing Difficulty',
+       'Clubbing of Finger Nails', 'Frequent Cold', 'Dry Cough', 'Snoring'],
+        dtype='object')'''
+        st.code(code, language='python')
+        data=pd.read_csv("datasets/trainy.csv", index_col=0)
+        st.subheader("Y_Train Data")
+        st.dataframe(data, use_container_width=True)
+
+
+       
 
     with tab3:
-        st.header("An owl")
-        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+        st.header("Lung Cancer Training Dataset")
+
+        st.subheader("X_Test Data")
+        data=pd.read_csv("datasets/testx.csv", index_col=0)
+        st.write(data)
+        code = ''' Index(['Age', 'Gender', 'Air Pollution', 'Alcohol use', 'Balanced Diet',
+       'Obesity', 'Smoking', 'Passive Smoker', 'Fatigue', 'Weight Loss',
+       'Shortness of Breath', 'Wheezing', 'Swallowing Difficulty',
+       'Clubbing of Finger Nails', 'Frequent Cold', 'Dry Cough', 'Snoring'],
+        dtype='object')'''
+        st.code(code, language='python')
+        data=pd.read_csv("datasets/testy.csv", index_col=0)
+        st.subheader("Y_Test Data")
+        st.dataframe(data, use_container_width=True)
         
     with tab4:
-        st.title("List of Algorithms Used")
+        st.header("List of Algorithms Used")
         algo = Image.open("images/algo.png")
 
         st.image(algo, caption='ML Algorithms',width=700)
@@ -121,6 +160,28 @@ if (selection == 'About the Dataset'):
             - Decision Tree Classifier
             """
             )
+        
+        st.write("The accuracy of all the above algorithms is as follows:- ")
+        code = '''The accuracy of the SVM is: 95 %
+        The accuracy of the SVM is: 100 %
+        The accuracy of Decision Tree is: 100 %
+        The accuracy of KNN is: 100 %'''
+        st.code(code, language='python')
+
+        st.header("Confusion Matrix")
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            algo = Image.open("images/lg.png")
+
+            st.image(algo, caption='LG Confusion Matrix',width=350)
+
+        with col2:
+            algo = Image.open("images/svm.png")
+
+            st.image(algo, caption='SVM Confusion Matrix',width=390)
+
 
     with tab5:
         st.title("Convolutional Neural Network Model")
@@ -271,6 +332,13 @@ if (selection == 'CNN Based disease Prediction'):
             
               
 
-    
+# hide_st_style = """
+#             <style>
+#             #MainMenu {visibility: hidden;}
+#             footer {visibility: hidden;}
+#             header {visibility: hidden;}
+#             </style>
+#             """
+# st.markdown(hide_st_style, unsafe_allow_html=True)  
 
     
