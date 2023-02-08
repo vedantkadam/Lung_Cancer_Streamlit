@@ -1,37 +1,45 @@
+# Lung Cancer Detection using Machine Learning
 
-# Lung Cancer Detection
+- If lung cancer is found at an earlier stage, when it is small and before it has spread, it is more likely to be treated successfully. Lung cancer screening is recommended for certain people who smoke or used to smoke, but who don't have any signs or symptoms. If a person has lung cancer but doesn't have any symptoms, this usually means there's a chance to detect the disease early.
 
-Project based on Machine Learning
+- Symptoms and the results of certain tests may strongly suggest that a person has lung cancer, but the actual diagnosis is made by looking at lung cells in the lab.
 
-If lung cancer is found at an earlier stage, when it is small and before it has spread, it is more likely to be treated successfully.
+- The cells can be taken from lung secretions (mucus you cough up from the lungs), fluid removed from the area around the lung (thoracentesis), or from a suspicious area using a needle or surgery (biopsy). The choice of which test(s) to use depends on the situation.
 
-Lung cancer screening is recommended for certain people who smoke or used to smoke, but who don't have any signs or symptoms. If a person has lung cancer but doesn't have any symptoms, this usually means there's a chance to detect the disease early.
+## How to Run this Project
 
-Usually symptoms of lung cancer don't appear until the disease is already at an advanced stage. Even when lung cancer does cause symptoms, many people may mistake them for other problems, such as an infection or long-term effects from smoking. This may delay the diagnosis.
+- Clone this Project
 
-Symptoms and the results of certain tests may strongly suggest that a person has lung cancer, but the actual diagnosis is made by looking at lung cells in the lab.
-
-The cells can be taken from lung secretions (mucus you cough up from the lungs), fluid removed from the area around the lung (thoracentesis), or from a suspicious area using a needle or surgery (biopsy). The choice of which test(s) to use depends on the situation.
-
-## Installation
-
-The following libraries are needed
-
-```bash
-pip install numpy
-pip install pandas
-pip install mljar-mercury
-pip install matplotlib
+```
+git clone URL
+```
+```
+cd LungCancerDetection
 ```
 
-Install modules if not available using following commands
-```bash
+- Install modules if not available using following commands
+```
 pip install -r requirements.txt
 ```
 
-### Notes 
-- Model needs to be trained on various algo (Logistic done)
-- implement model in webapp
-- hosting maybe
-- CNN Angle 
-- Using google ml tool
+- Run the app.py file
+```
+streamlit run app.py
+```
+
+Note- Sometimes models as well as csv file might not be detected due to environment related issue it is recommended that you install Anaconda and create a seperate environment by the name 'tf' install required modules.
+Then run the following commands-
+```
+activate conda tf
+cd LungCancerDetection
+streamlit run app.py
+
+```
+
+
+
+
+
+
+
+

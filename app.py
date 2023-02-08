@@ -90,7 +90,17 @@ if (selection == 'About the Dataset'):
         st.header("Lung Cancer Dataset")
         data=pd.read_csv("datasets/data.csv")
         st.write(data.head(10))
+        code = '''
+        Index(['Age', 'Gender', 'Air Pollution', 'Alcohol use', 'Dust Allergy',
+       'OccuPational Hazards', 'Genetic Risk', 'chronic Lung Disease',
+       'Balanced Diet', 'Obesity', 'Smoking', 'Passive Smoker', 'Chest Pain',
+       'Coughing of Blood', 'Fatigue', 'Weight Loss', 'Shortness of Breath',
+       'Wheezing', 'Swallowing Difficulty', 'Clubbing of Finger Nails',
+       'Frequent Cold', 'Dry Cough', 'Snoring', 'Level'],
+      dtype='object')'''
+        st.code(code, language='python')
 
+        
         st.header("Pearson Correlation Matrix")
         coors = Image.open("images/coors.png")
 
@@ -281,8 +291,7 @@ if (selection == 'CNN Based disease Prediction'):
 
   cnn = loading_model()
   st.write("""
-  # Lung Cancer Detection using CNN and CT-Scan Images
-  by Vedant :)
+  # Lung Cancer Detection using CNN and CT-Scan Images)
   """)
 
 
