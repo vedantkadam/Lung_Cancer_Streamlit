@@ -9,7 +9,12 @@
 - Check out the live Deployment at - [Streamlit Deployment](https://vedantkadam-lung-cancer-streamlit-app-le67uq.streamlit.app/) 
 ## How to Run this Project
 
-- Clone this Project
+## Tech Stacks Used
+
+- Python
+- Streamlit API
+- Tensorflow , Keras API
+- Numpy , Pandas , Seaborn
 
 ```
 git clone URL
@@ -46,17 +51,10 @@ streamlit run app.py
   </a>
 </p>
 
+## Project Demo
 
+https://user-images.githubusercontent.com/83024561/217852039-1365ed15-9963-4cac-b19b-fe7be9ff5794.mp4
 
-## UI Screenshots
-
-1. Home Page
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/83024561/197262380-0049a0e0-5b4a-4f65-81e3-01c72d6f8769.png"
-         alt="csi_logo">
-</p>
-
-![](https://media.giphy.com/media/2JKmET4Lyp1PXhD3U3/giphy.gif)
 
 
 
