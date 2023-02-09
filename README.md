@@ -56,7 +56,7 @@ streamlit run app.py
          alt="csi_logo">
 </p>
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![](https://media.giphy.com/media/2JKmET4Lyp1PXhD3U3/giphy.gif)
 
 
 
