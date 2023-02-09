@@ -43,7 +43,7 @@ if (selection == 'Introduction'):
     The American Cancer Society’s estimates for lung cancer in the US for 2023 are:
     - About 238,340 new cases of lung cancer (117,550 in men and 120,790 in women)
     - About 127,070 deaths from lung cancer (67,160 in men and 59,910 in women)
-    - Item 3
+
     """
     )
 
@@ -194,7 +194,63 @@ if (selection == 'About the Dataset'):
 
 
     with tab5:
-        st.title("Convolutional Neural Network Model")
+        st.header("Convolutional Neural Network Model")
+        st.write("Apart from detecting cancer using various parameters in the dataset we can also make out predictions using CT Scan Images by using Convolutional Neural Networks. Link to the image dataset is given below :- ")
+        url = "https://www.kaggle.com/datasets/mohamedhanyyy/chest-ctscan-images"
+        st.write("Check out this [Images Dataset](%s)" % url)
+
+        st.subheader("Approach Followed :- ")
+        st.markdown(
+            """
+            - For training our model we have used the Keras API.
+            - We have used 2D Convolution Layer along with consecutive MaxPooling Layers to improve the models performance.
+            - Because we are facing a two-class classification problem, i.e. a binary classification problem, we will end the network with a sigmoid activation. The output of the network will be a single scalar between 0 and 1, encoding the probability that the current image is class 1 (as opposed to class 0).
+            """
+            )
+        st.subheader("Model Summary")
+        summ = Image.open("images/summary.png")
+
+        st.image(summ, caption='Model Summary',width=700)
+        st.subheader("Model Compile ")
+        st.write(" You will train our model with the binary_crossentropy loss, because it's a binary classification problem and your final activation is a sigmoid. We will use the rmsprop optimizer with a learning rate of 0.001. During training, you will want to monitor classification accuracy.")
+        code = '''from tensorflow.keras.optimizers import RMSprop
+
+        model.compile(optimizer=RMSprop(learning_rate=0.001),
+        loss='binary_crossentropy',
+        metrics = ['accuracy'])'''
+        st.code(code, language='python')
+
+        st.subheader("Fitting Data to the Model")
+        st.write(" You will train our model with the binary_crossentropy loss, because it's a binary classification problem and your final activation is a sigmoid. We will use the rmsprop optimizer with a learning rate of 0.001. During training, you will want to monitor classification accuracy.")
+        code = '''model.fit(
+        train_generator,
+        epochs=15,
+        validation_data=validation_generator,
+        verbose=2
+            )'''
+        st.code(code, language='python')
+
+        epoc = Image.open("images/epoc.png")
+
+        st.image(epoc, caption='Number of Epocs',width=700)
+
+        st.subheader("Plotting the Traning vs Validation (Accuracy and Loss)")
+        col1, col2 = st.columns(2)
+
+        with col1:
+            acc = Image.open("images/acc.png")
+
+            st.image(acc, caption='Traning vs Validation Accuracy',width=350)
+
+        with col2:
+            loss = Image.open("images/loss.png")
+
+            st.image(loss, caption='Traning vs Validation Loss',width=350)
+
+        st.write("As we can see from the above diagram that our Models performs well on the Training as well as Validation Data")
+
+
+        
     
 
 # Lung Cancer disease Prediction pages
@@ -214,7 +270,7 @@ if (selection == 'Lung Cancer Prediction'):
 
     st.title('Lung Cancer Prediction using ML')
 
-    idn = st.slider('How old are you?', 0, 200, 25)
+    idn = st.slider('Select any index from Testing Data', 0, 200, 25)
     a=concate_data.iloc[idn]
     st.write("I'm ", idn, 'this index')
     aa=list(concate_data.iloc[idn])
