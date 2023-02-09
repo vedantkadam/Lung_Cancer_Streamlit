@@ -157,7 +157,7 @@ if (selection == 'About the Dataset'):
         st.header("List of Algorithms Used")
         algo = Image.open("images/algo.png")
 
-        st.image(algo, caption='ML Algorithms',width=700)
+        st.image(algo, caption='ML Algorithms',width=500)
 
         st.write("Since this is a Mutlti-Class Classification we have used Algorithms which are maily used for Supervised Learning for the following Problem Statement ")
 
@@ -272,7 +272,7 @@ if (selection == 'Lung Cancer Prediction'):
 
     idn = st.slider('Select any index from Testing Data', 0, 200, 25)
     a=concate_data.iloc[idn]
-    st.write("I'm ", idn, 'this index')
+    st.write("Displaying vales of index ", idn)
     aa=list(concate_data.iloc[idn])
     if st.button('Show me this value'):
         st.write(aa)
