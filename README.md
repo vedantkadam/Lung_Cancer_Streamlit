@@ -16,6 +16,7 @@
 - Tensorflow , Keras API
 - Numpy , Pandas , Seaborn
 
+## How to run this Project
 ```
 git clone URL
 ```
