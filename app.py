@@ -13,7 +13,7 @@ import tensorflow as tf
 from tempfile import NamedTemporaryFile
 from tensorflow.keras.preprocessing import image 
 from streamlit_option_menu import option_menu
-st.set_page_config(page_title='Lung Cancer Detection', page_icon="🖖")
+st.set_page_config(page_title='Lung Cancer Detection')
 #Loading models
 cancer_model = pickle.load(open('models/final_model.sav', 'rb'))
 
@@ -200,62 +200,101 @@ if (selection == 'About the Dataset'):
 # Lung Cancer disease Prediction pages
 if (selection == 'Lung Cancer Prediction'):
     #page title
+    
+    ##this code is reduce effort of manuallu entering values
+    testx=pd.read_csv("datasets/testx.csv",index_col=0)
+    testy=pd.read_csv("datasets/testy.csv",index_col=0)
+    testx.reset_index(drop=True, inplace=True)
+    testy.reset_index(drop=True, inplace=True)
+    
+    concate_data = pd.concat([testx,testy],axis=1)
+
+    
+    
 
     st.title('Lung Cancer Prediction using ML')
 
+    idn = st.slider('How old are you?', 0, 200, 25)
+    a=concate_data.iloc[idn]
+    st.write("I'm ", idn, 'this index')
+    aa=list(concate_data.iloc[idn])
+    if st.button('Show me this value'):
+        st.write(aa)
+
+    ##values will come directly from here no manual needed
+    a=concate_data.iloc[idn][0]
+    b=concate_data.iloc[idn][1]
+    c=concate_data.iloc[idn][2]
+    d=concate_data.iloc[idn][3]
+    e=concate_data.iloc[idn][4]
+    f=concate_data.iloc[idn][5]
+    g=concate_data.iloc[idn][6]
+    h=concate_data.iloc[idn][7]
+    i=concate_data.iloc[idn][8]
+    j=concate_data.iloc[idn][9]
+    k=concate_data.iloc[idn][10]
+    l=concate_data.iloc[idn][11]
+    m=concate_data.iloc[idn][12]
+    n=concate_data.iloc[idn][13]
+    o=concate_data.iloc[idn][14]
+    p=concate_data.iloc[idn][15]
+    q=concate_data.iloc[idn][16]
+
+
+
     
     col1, col2, col3 = st.columns(3)
-    
     with col1:
-        Age = st.text_input('Age', key="1")
+        
+        Age = st.text_input('Age', key="1",value=a)
         
     with col2:
-        Gender = st.text_input('Gender', key="2")
+        Gender = st.text_input('Gender', key="2",value=b)
         
     with col3:
-        AirPollution = st.text_input('Air Pollution', key="3")
+        AirPollution = st.text_input('Air Pollution', key="3",value=c)
 
     with col1:
-        Alcoholuse = st.text_input('Alcohol Use', key="4")  
+        Alcoholuse = st.text_input('Alcohol Use', key="4",value=d)  
 
     with col2:
-        BalancedDiet = st.text_input('Balanced Diet', key="5")
+        BalancedDiet = st.text_input('Balanced Diet', key="5",value=e)
         
     with col3:
-        Obesity = st.text_input('Obesity', key="6")
+        Obesity = st.text_input('Obesity', key="6",value=f)
         
     with col1:
-        Smoking = st.text_input('Smoking', key="7")
+        Smoking = st.text_input('Smoking', key="7",value=g)
         
     with col2:
-        PassiveSmoker = st.text_input('Passive Smoker', key="8")
+        PassiveSmoker = st.text_input('Passive Smoker', key="8",value=h)
         
     with col3:
-        Fatigue = st.text_input('Fatigue', key="9")
+        Fatigue = st.text_input('Fatigue', key="9",value=i)
         
     with col1:
-        WeightLoss = st.text_input('Weight Loss', key="10")
+        WeightLoss = st.text_input('Weight Loss', key="10",value=j)
         
     with col2:
-        ShortnessofBreath = st.text_input('Shortness of Breath', key="11")
+        ShortnessofBreath = st.text_input('Shortness of Breath', key="11",value=k)
         
     with col3:
-        Wheezing = st.text_input('Wheezing', key="12")
+        Wheezing = st.text_input('Wheezing', key="12",value=l)
         
     with col1:
-        SwallowingDifficulty = st.text_input('Swallowing Difficulty', key="13")
+        SwallowingDifficulty = st.text_input('Swallowing Difficulty', key="13",value=m)
         
     with col2:
-        ClubbingofFingerNails = st.text_input('Clubbing of Finger Nails', key="14")
+        ClubbingofFingerNails = st.text_input('Clubbing of Finger Nails', key="14",value=n)
 
     with col3:
-        FrequentCold = st.text_input('Frequent Cold', key="15")
+        FrequentCold = st.text_input('Frequent Cold', key="15",value=o)
         
     with col1:
-        DryCough = st.text_input('Dry Cough', key="16")    
+        DryCough = st.text_input('Dry Cough', key="16",value=p)    
      
     with col2:
-        Snoring = st.text_input('Snoring  ', key="17")
+        Snoring = st.text_input('Snoring  ', key="17",value=q)
  
     # code for Prediction
     heart_diagnosis = ''
@@ -272,13 +311,16 @@ if (selection == 'Lung Cancer Prediction'):
         else:
           heart_diagnosis = 'The person does not have any heart disease'
         
-    st.success(heart_diagnosis)
+        st.success(heart_diagnosis)
 
-
-
+    expander = st.expander("Here are some more random values from Test Set")
+    
+    expander.write(concate_data.head(5))
     
 
-
+    
+        
+   
 
 if (selection == 'CNN Based disease Prediction'):
   st.set_option('deprecation.showfileUploaderEncoding', False)
@@ -330,11 +372,13 @@ if (selection == 'CNN Based disease Prediction'):
     if hardik_preds[0][0]>= 0.5:
       out = ('I am {:.2%} percent confirmed that this is a Normal Case'.format(hardik_preds[0][0]))
       st.balloons()
+      st.success(out)
     
     else: 
       out = ('I am {:.2%} percent confirmed that this is a Lung Cancer Case'.format(1-hardik_preds[0][0]))
+      st.error(out)
 
-    st.success(out)
+    
     
     image = Image.open(temp)
     st.image(image,use_column_width=True)
