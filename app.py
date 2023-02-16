@@ -18,13 +18,17 @@ st.set_page_config(page_title='Lung Cancer Detection')
 cancer_model = pickle.load(open('models/final_model.sav', 'rb'))
 
 with st.sidebar:
-    selection = option_menu('Lung Cancer Detection System',
+    st.title("    Lung Cancer Detection System")
+    st.image("images/lungp.jpg")
+    selection = option_menu('',
     ['Introduction',
+    
     'About the Dataset',
     'Lung Cancer Prediction',
     'CNN Based disease Prediction'],
     icons = ['activity','heart','person', 'heart'],
     default_index = 0)
+    
 
 #Introduction page
 if (selection == 'Introduction'):
@@ -389,7 +393,7 @@ if (selection == 'CNN Based disease Prediction'):
 
   cnn = loading_model()
   st.write("""
-  # Lung Cancer Detection using CNN and CT-Scan Images)
+  # Lung Cancer Detection using CNN and CT-Scan Images
   """)
 
 
