@@ -47,8 +47,8 @@ streamlit run app.py
 ## Architecture
 <p align="center">
   <a href="/">
-    <img src="https://user-images.githubusercontent.com/83024561/197261904-7c925dfd-e6ca-4eb8-98ad-fb48ccfef386.png"
-         alt="csi_logo" width="500" height="500">
+    <img src="https://user-images.githubusercontent.com/83024561/219716865-f5bb045e-781d-4281-ae13-b86fcaab911a.png"
+         alt="csi_logo" width="800" height="400">
   </a>
 </p>
 
