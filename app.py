@@ -366,12 +366,17 @@ if (selection == 'Lung Cancer Prediction'):
         
         if (heart_prediction[0] == 'High'):
           heart_diagnosis = 'The person is having heart disease'
+          st.balloons()
+          st.success(heart_diagnosis)
+
         elif(heart_prediction[0] == 'Medium'):
           heart_diagnosis = 'The person is chance of having heart disease'
+          st.warning(heart_diagnosis)
         else:
           heart_diagnosis = 'The person does not have any heart disease'
+          st.error(heart_diagnosis)
         
-        st.success(heart_diagnosis)
+        
 
     expander = st.expander("Here are some more random values from Test Set")
     
