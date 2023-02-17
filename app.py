@@ -363,7 +363,6 @@ if (selection == 'Lung Cancer Prediction'):
         
         if (heart_prediction[0] == 'High'):
           heart_diagnosis = 'The person is having heart disease'
-          st.balloons()
           st.success(heart_diagnosis)
 
         elif(heart_prediction[0] == 'Medium'):
@@ -371,6 +370,7 @@ if (selection == 'Lung Cancer Prediction'):
           st.warning(heart_diagnosis)
         else:
           heart_diagnosis = 'The person does not have any heart disease'
+          st.balloons()
           st.error(heart_diagnosis)
         
         
