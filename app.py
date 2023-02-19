@@ -17,8 +17,9 @@ st.set_page_config(page_title='Lung Cancer Detection')
 #Loading models
 cancer_model = pickle.load(open('models/final_model.sav', 'rb'))
 
+
 with st.sidebar:
-    selection = option_menu(' Lung Cancer Detection System',
+    selection = option_menu('Lung Cancer Detection System',
     ['Introduction',
     'About the Dataset',
     'Lung Cancer Prediction',
